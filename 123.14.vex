@@ -45,7 +45,7 @@ void down(){
 // Top_right            motor         2               
 // Grabber              motor         3               
 // Lifter1              motor         4               
-// Lifter2              motor         5               
+// Lifter2              motor         5                
 // Lifter3              motor         6               
 // Lifter4              motor         7               
 // Vision8              vision        8               
