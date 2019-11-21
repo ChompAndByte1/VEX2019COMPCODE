@@ -12,6 +12,7 @@ void turn(){
   Top_right.spin(directionType::rev);
     
 }
+
 void close(){
  Grabber.spin(directionType::rev);
 }
@@ -45,7 +46,7 @@ void down(){
 // Top_right            motor         2               
 // Grabber              motor         3               
 // Lifter1              motor         4               
-// Lifter2              motor         5                
+// Lifter2              motor         5               
 // Lifter3              motor         6               
 // Lifter4              motor         7               
 // Vision8              vision        8               
@@ -81,77 +82,77 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 void autonomous(void) {
-  backward;
+  backward();
  task::sleep(1000);
  //go back push block
-  forward;
+  forward();
   task::sleep(1000);
  //go forward
-  turn;
-  task::sleep(1000);
+  turn();
+  task::sleep(1500);
  //turn right to the block
-  forward;
-  open;
+  forward();
+  open();
   task::sleep(1000);
   // go forward and open claw
-  close;
+  close();
   task::sleep(1000);
   //close claw and grab block
     
-  up;
+  up();
   task::sleep(1000);
   //lift the block
-  turn;
+  turn();
   task::sleep(1000);
   //turn to goal
-  forward;
+  forward();
   task::sleep(1000);
   //go to tower
-  open;
+  open();
   task::sleep(1000);
   //drop the block
-  turn;
+  turn();
   task::sleep(1000);
  //turn to next block
-    forward;
+    forward();
   task::sleep(1000);
    // go to next block
-    close;
+    close();
   task::sleep(1000);
     //close claw
-  up;
+  up();
   task::sleep(1000);
  // lift
-  forward;
+  forward();
   task::sleep(1000);
   //open claw turn to block
-  open;
+  open();
   task::sleep(1000);
  //drive to block
-  backward;
-    close;
+  backward();
+    close();
   task::sleep(1000);
   //close claw
-  down;
+  down();
  task::sleep(1000);
  //go to tower
  //add turn text here jkagdagfJKbcgjygydufJAjefygagyufafjjgearfgeajgd
-  open;
+  open();
   task::sleep(1000);
  //lift block
-  forward;
+  forward();
   task::sleep(1000);
   //move froward a bit
-  close;
+  close();
   task::sleep(1000);
   //drop block
-    turn;
+    turn();
     task::sleep(1000);
-    forward;
+    forward();
     task::sleep(1000);
-    up;
+    up();
     task::sleep(1000);
-    open;
+    open();
     task::sleep(1000);
   // ..........................................................................
   // Insert autonomous user code here.
