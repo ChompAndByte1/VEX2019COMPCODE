@@ -1,0 +1,7 @@
+while(true)
+    {
+        Top_left.spin(directionType::fwd, Controller1.Axis3.value(), velocityUnits::pct);
+        Bottom_left.spin(directionType::fwd, Controller1.Axis3.value(), velocityUnits::pct);
+        Top_right.spin(directionType::fwd, Controller1.Axis2.value(), velocityUnits::pct);
+        Top_right.spin(directionType::fwd, Controller1.Axis2.value(), velocityUnits::pct);
+    }
