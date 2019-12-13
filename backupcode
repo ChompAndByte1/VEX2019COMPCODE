@@ -1,5 +1,6 @@
 #include "robot-config.cpp"
 #include "vex.h"
+#include "robot-config.h"
 void forwards(){
     Top_left.spin(directionType::fwd);
     Top_right.spin(directionType::fwd);
