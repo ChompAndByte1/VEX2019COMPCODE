@@ -1,0 +1,238 @@
+#include "robot-config.cpp"
+#include "vex.h"
+#include "robot-config.h"
+
+
+void forwards(){
+    Top_left.spin(directionType::fwd);
+    Top_right.spin(directionType::fwd);
+}
+void backwards(){
+    Top_left.spin(directionType::rev);
+  Top_right.spin(directionType::rev);
+}
+void turn(){
+    Top_left.spin(directionType::fwd);
+  Top_right.spin(directionType::rev);
+    
+}
+
+void close(){
+ Grabber.spin(directionType::rev);
+}
+void open(){
+    Grabber.spin(directionType::fwd);
+}
+void up(){
+ Lifter1.spin(directionType::fwd);
+  Lifter2.spin(directionType::fwd);
+  Lifter3.spin(directionType::fwd);
+  Lifter4.spin(directionType::fwd);   
+}
+void down(){
+     Lifter1.spin(directionType::rev);
+  Lifter2.spin(directionType::rev);
+  Lifter3.spin(directionType::rev);
+  Lifter4.spin(directionType::rev);
+ }   
+//----------------------------------------------------------------------------//                                                      
+/*    Module:       main.cpp                                                  */
+/*    Author:       VEX                                                       */
+/*    Created:      Thu Sep 26 2019                                           */
+/*    Description:  Competition Template                                      */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Top_left             motor         1               
+// Top_right            motor         2               
+// Grabber              motor         3               
+// Lifter1              motor         4               
+// Lifter2              motor         5               
+// Lifter3              motor         6               
+// Lifter4              motor         7               
+// Controller1          controller                    
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
+using namespace vex;
+// A global instance of competition
+competition Competition;
+// define your global instances of motors and other devices here
+/*---------------------------------------------------------------------------*/
+/*                          Pre-Autonomous Functions                         */
+/*                                                                           */
+/*  You may want to perform some actions before the competition starts.      */
+/*  Do them in the following function.  You must return from this function   */
+/*  or the autonomous and usercontrol tasks will not be started.  This       */
+/*  function is only called once after the V5 has been powered on and        */
+/*  not every time that the robot is disabled.                               */
+/*---------------------------------------------------------------------------*/
+void pre_auton(void) {
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  
+
+  // All activities that occur before the competition starts
+  // Example: clearing encoders, setting servo positions, ...
+}
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*                              Autonomous Task                              */
+/*                                                                           */
+/*  This task is used to control your robot during the autonomous phase of   */
+/*  a VEX Competition.                                                       */
+/*                                                                           */
+/*  You must modify the code to add your own robot specific commands here.   */
+/*---------------------------------------------------------------------------*/
+void autonomous(void) {
+  backwards();
+  task::sleep(1100);
+ //go back push block
+  forwards();
+  task::sleep(1100);
+   //go forward
+  //turn();
+  //task::sleep(1500);
+ //turn right to the block
+  //forwards();
+  //open();
+  //task::sleep(1000);
+  // go forward and open claw
+  //close();
+  //task::sleep(1000);
+  //close claw and grab block
+    
+ // up();
+  //task::sleep(1000);
+  //lift the block
+  //turn();
+  //task::sleep(1000);
+  //turn to goal
+  //forwards();
+  //task::sleep(1000);
+  //go to tower
+ // open();
+ // task::sleep(1000);
+  //drop the block
+ // turn();
+ // task::sleep(1000);
+ //turn to next block
+   // forwards();
+  //task::sleep(1000);
+   // go to next block
+    //close();
+  //task::sleep(1000);
+    //close claw
+  //up();
+  //task::sleep(1000);
+ // lift
+  //forwards();
+ // task::sleep(1000);
+  //open claw turn to block
+ // open();
+ // task::sleep(1000);
+ //drive to block
+ // backwards();
+  //  close();
+  //task::sleep(1000);
+  //close claw
+  //down();
+ //task::sleep(1000);
+ //go to tower
+ //add turn text here jkagdagfJKbcgjygydufJAjefygagyufafjjgearfgeajgd
+  //open();
+ // task::sleep(1000);
+ //lift block
+  //forwards();
+  //task::sleep(1000);
+  //move froward a bit
+  //close();
+  //task::sleep(1000);
+  //drop block
+    //turn();
+   // task::sleep(1000);
+   // forwards();
+   // task::sleep(1000);
+  //up();
+   // task::sleep(1000);
+   // open();
+   // task::sleep(1000);
+  // ..........................................................................
+  // Insert autonomous user code here.
+  // ..........................................................................
+}
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*                              User Control Task                            */
+/*                                                                           */
+/*  This task is used to control your robot during the user control phase of */
+/*  a VEX Competition.                                                       */
+/*                                                                           */
+/*  You must modify the code to add your own robot specific commands here.   */
+/*---------------------------------------------------------------------------*/
+void usercontrol(void) {
+  // User control code here, inside the loop
+  while (1) {
+    // This is the main execution loop for the user control program.
+    // Each time through the loop your program should update motor + servo
+    // values based on feedback from the joysticks.
+        Top_left.spin(directionType::fwd, Controller1.Axis2.value(), velocityUnits::pct); //left joystick, left wheel
+        Top_right.spin(directionType::fwd, Controller1.Axis3.value(), velocityUnits::pct);//right joystick, right wheel
+        if(Controller1.ButtonR1.pressing()){
+          Grabber.spin(directionType::fwd);
+        }     
+        else if(Controller1.ButtonL1.pressing()){
+            Grabber.spin(directionType::rev);
+        }
+        else if(Controller1.ButtonB.pressing()){
+         Grabber.spin(directionType::fwd,20,velocityUnits::rpm);
+        }
+        else{
+            Grabber.stop(); 
+        }
+        if(Controller1.ButtonR2.pressing()){
+            Lifter1.spin(directionType::rev);
+            Lifter2.spin(directionType::rev);
+            Lifter3.spin(directionType::rev);
+            Lifter4.spin(directionType::rev);
+        }
+  
+        else if(Controller1.ButtonL2.pressing()){
+            Lifter1.spin(directionType::fwd);
+            Lifter2.spin(directionType::fwd);
+            Lifter3.spin(directionType::fwd);
+            Lifter4.spin(directionType::fwd);
+        }
+        else {
+            Lifter1.stop();
+            Lifter2.stop();
+            Lifter3.stop();
+            Lifter4.stop();
+        }   
+    }
+    
+
+    // ........................................................................
+    // Insert user code here. This is where you use the joystick values to
+    // update your motors, etc.
+    // ........................................................................ 
+
+}                 // prevent wasted resources.
+//
+// Main will set up the competition functions and callbacks.
+//
+int main() {
+  // Set up callbacks for autonomous and driver control periods.
+  Competition.autonomous(autonomous);
+  Competition.drivercontrol(usercontrol);
+
+  // Run the pre-autonomous function.
+  pre_auton();
+
+  // Prevent main from exiting with an infinite loop.
+  
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  
+  
+}
+
